@@ -29,9 +29,11 @@
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
-    <dubbo:protocol name="http" id="http" port="${servlet.port:8080}" server="${servlet.container:tomcat}"/>
+    <!-- 配置 dubbo 协议 -->
+    <dubbo:protocol name="dubbo" port="20880"/>
 
     <bean id="demoService" class="top.lz2y.impl.DemoServiceImpl"/>
 
+    <!-- 只使用 dubbo 协议 -->
     <dubbo:service interface="top.lz2y.service.DemoService" ref="demoService" protocol="dubbo"/>
 </beans>
